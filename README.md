@@ -7,7 +7,7 @@
     spring-cloud-sample-consumer        服务消费者
     
 ##### 运行
-    mvn clean package
+    mvn clean package -Dmaven.test.skip=true
     
 ###### 启动服务中心
     java -jar spring-cloud-sample-eureka-server/target/spring-cloud-sample-eureka-server-1.0.jar --server.port=1111
@@ -18,8 +18,6 @@
     java -jar spring-cloud-sample-userservice/target/spring-cloud-sample-userservice-1.0.jar --server.port=2223
     java -jar spring-cloud-sample-userservice/target/spring-cloud-sample-userservice-1.0.jar --server.port=2224
     java -jar spring-cloud-sample-userservice/target/spring-cloud-sample-userservice-1.0.jar --server.port=2225
-###### 启动服务消费者
-    java -jar spring-cloud-sample-consumer/target/spring-cloud-sample-consumer-1.0.jar --server.port=3333
-###### 测试
-    http://localhost:3333/consumer/user/get/1
-    http://localhost:3333/consumer/user/all
+###### 测试服务消费者
+    mvn test -Dtest=spring.cloud.sample.ConsumerTest#all -DfailIfNoTests=false
+    mvn test -Dtest=spring.cloud.sample.ConsumerTest#get -DfailIfNoTests=false

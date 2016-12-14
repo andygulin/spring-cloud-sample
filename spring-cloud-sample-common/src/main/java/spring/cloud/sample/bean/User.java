@@ -50,4 +50,15 @@ public class User implements Serializable {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("id : " + this.id).append("\n");
+        sb.append("name : " + this.name).append("\n");
+        sb.append("age : " + this.age).append("\n");
+        sb.append("address : " + this.address).append("\n");
+        sb.append("createdAt : " + this.createdAt);
+        return sb.toString();
+    }
 }
