@@ -24,5 +24,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
         </dependency>
+        <dependency>
+            <groupId>spring.cloud.sample</groupId>
+            <artifactId>spring-cloud-sample-common</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

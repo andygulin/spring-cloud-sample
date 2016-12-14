@@ -10,4 +10,16 @@
     <packaging>jar</packaging>
     <name>spring-cloud-sample-common</name>
     <url>http://maven.apache.org</url>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layout>MODULE</layout>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
