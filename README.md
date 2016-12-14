@@ -21,5 +21,5 @@
 ###### 启动服务消费者
     java -jar spring-cloud-sample-consumer/target/spring-cloud-sample-consumer-1.0.jar --server.port=3333
 ###### 测试
-    http://localhost:3333/consumer/get/1
-    http://localhost:3333/consumer/all
+    http://localhost:3333/consumer/user/get/1
+    http://localhost:3333/consumer/user/all
