@@ -6,6 +6,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 import spring.cloud.sample.bean.User;
@@ -14,6 +17,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@DirtiesContext
 public class ConsumerTest {
 
     @Autowired
@@ -21,8 +25,8 @@ public class ConsumerTest {
 
     @Test
     public void all() {
-        @SuppressWarnings("unchecked")
-        List<User> users = (List<User>) restTemplate.getForEntity("http://user-service/user/all", List.class).getBody();
+        List<User> users = restTemplate.exchange("http://user-service/user/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>() {
+        }).getBody();
         System.out.println(StringUtils.repeat("=", 120));
         for (User user : users) {
             System.out.println(user);
