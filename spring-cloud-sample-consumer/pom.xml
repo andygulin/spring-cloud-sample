@@ -27,7 +27,7 @@
         <dependency>
             <groupId>spring.cloud.sample</groupId>
             <artifactId>spring-cloud-sample-common</artifactId>
-            <version>1.0</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

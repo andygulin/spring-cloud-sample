@@ -10,13 +10,10 @@ import spring.cloud.sample.bean.User;
 import spring.cloud.sample.service.UserService;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
-    private static final Logger logger = Logger.getLogger(UserController.class.getName());
 
     @Autowired
     private UserService userService;
