@@ -4,18 +4,22 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import spring.cloud.sample.annotation.RequireServiceInstance;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ServiceInstanceInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = Logger.getLogger(ServiceInstanceInterceptor.class.getName());
 
+    @Autowired
+    private Registration registration;
     @Autowired
     private DiscoveryClient discoveryClient;
 
@@ -25,14 +29,17 @@ public class ServiceInstanceInterceptor extends HandlerInterceptorAdapter {
             HandlerMethod obj = (HandlerMethod) handler;
             RequireServiceInstance requireServiceInstance = obj.getMethodAnnotation(RequireServiceInstance.class);
             if (requireServiceInstance != null) {
-                ServiceInstance instance = discoveryClient.getLocalServiceInstance();
-                logger.info(StringUtils.repeat("=", 80));
-                logger.info("Host : " + instance.getHost());
-                logger.info("Port : " + instance.getPort());
-                logger.info("Meatdata : " + instance.getMetadata());
-                logger.info("ServiceId : " + instance.getServiceId());
-                logger.info("Uri : " + instance.getUri());
-                logger.info(StringUtils.repeat("=", 80));
+                final String serviceId = registration.getServiceId();
+                List<ServiceInstance> serviceInstances = discoveryClient.getInstances(serviceId);
+                for (ServiceInstance serviceInstance : serviceInstances) {
+                    logger.info(StringUtils.repeat("=", 80));
+                    logger.info("Host : " + serviceInstance.getHost());
+                    logger.info("Port : " + serviceInstance.getPort());
+                    logger.info("Meatdata : " + serviceInstance.getMetadata());
+                    logger.info("ServiceId : " + serviceInstance.getServiceId());
+                    logger.info("Uri : " + serviceInstance.getUri());
+                    logger.info(StringUtils.repeat("=", 80));
+                }
             }
         }
         return true;
