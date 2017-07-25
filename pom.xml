@@ -12,6 +12,7 @@
         <module>spring-cloud-sample-userservice</module>
         <module>spring-cloud-sample-consumer</module>
         <module>spring-cloud-sample-common</module>
+        <module>spring-cloud-sample-config</module>
     </modules>
 
     <parent>
@@ -29,7 +30,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.RELEASE</version>
+                <version>Dalston.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
