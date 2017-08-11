@@ -24,5 +24,5 @@
 ###### 测试服务消费者
     java -jar spring-cloud-sample-consumer/target/spring-cloud-sample-consumer-1.0.jar
     
-    http://localhost:3333/user/all
-    http://localhost:3333/user/get/1
+    http://localhost:8080/user/all
+    http://localhost:8080/user/get/1
