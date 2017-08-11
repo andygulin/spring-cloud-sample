@@ -1,4 +1,6 @@
 eureka:
+  instance:
+    hostname: localhost
   client:
     registerWithEureka: false
     fetchRegistry: false
@@ -6,3 +8,9 @@ eureka:
       defaultZone: http://localhost:${server.port}/eureka/
 server:
   port: 1111
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin

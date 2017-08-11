@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-service-consumer
+    name: service-consumer
 eureka:
   client:
     serviceUrl:

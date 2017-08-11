@@ -14,6 +14,8 @@
     
 ###### 查看服务中心状态
     http://localhost:1111
+    用户名：admin
+    密码：admin
     
 ###### 启动服务提供者，可以启动多个用于负载
     java -jar spring-cloud-sample-userservice/target/spring-cloud-sample-userservice-1.0.jar --server.port=2222
@@ -24,5 +26,5 @@
 ###### 测试服务消费者
     java -jar spring-cloud-sample-consumer/target/spring-cloud-sample-consumer-1.0.jar
     
-    http://localhost:8080/user/all
-    http://localhost:8080/user/get/1
+    http://localhost:8080/service/user/all
+    http://localhost:8080/service/user/get/1
