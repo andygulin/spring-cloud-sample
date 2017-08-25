@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         try {
             return jdbcTemplate.queryForObject("SELECT * FROM user WHERE id = ?", BeanPropertyRowMapper.newInstance(User.class), id);
         } catch (EmptyResultDataAccessException e) {
-            return new User();
+            return null;
         }
     }
 }

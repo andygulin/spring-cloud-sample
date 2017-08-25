@@ -4,6 +4,10 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:1111/eureka/
 server:
   port: 8080
+security:
+  user:
+    name: admin
+    password: admin
