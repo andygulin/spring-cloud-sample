@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import spring.cloud.sample.bean.User;
 import spring.cloud.sample.client.UserServiceClient;
-
-import java.util.List;
+import spring.cloud.sample.response.MessageResponse;
 
 @RestController
 @RequestMapping("/service")
@@ -18,12 +16,12 @@ public class ServiceController {
     private UserServiceClient userServiceClient;
 
     @GetMapping("/user/all")
-    public List<User> all() {
-        return userServiceClient.all();
+    public MessageResponse all() {
+        return MessageResponse.success(userServiceClient.all());
     }
 
     @GetMapping("/user/{id}")
-    public User get(@PathVariable("id") int id) {
-        return userServiceClient.get(id);
+    public MessageResponse get(@PathVariable("id") int id) {
+        return MessageResponse.success(userServiceClient.get(id));
     }
 }
