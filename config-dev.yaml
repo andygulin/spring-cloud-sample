@@ -5,7 +5,11 @@ service:
         peer1
       port1:
         1111
+      active1:
+        peer1
       hostname2:
         peer2
       port2:
         1112
+      active2:
+        peer2
