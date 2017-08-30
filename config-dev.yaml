@@ -1,0 +1,11 @@
+service:
+  eureka:
+    instance:
+      hostname1:
+        peer1
+      port1:
+        1111
+      hostname2:
+        peer2
+      port2:
+        1112
