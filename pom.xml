@@ -12,6 +12,7 @@
         <module>spring-cloud-sample-userservice</module>
         <module>spring-cloud-sample-consumer</module>
         <module>spring-cloud-sample-common</module>
+        <module>spring-cloud-sample-config-server</module>
     </modules>
 
     <parent>

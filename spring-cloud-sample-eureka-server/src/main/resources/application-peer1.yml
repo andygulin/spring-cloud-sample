@@ -1,0 +1,8 @@
+eureka:
+  instance:
+    hostname: ${service.eureka.instance.hostname1}
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@${service.eureka.instance.hostname2}:${service.eureka.instance.port2}/eureka/
+server:
+  port: ${service.eureka.instance.port1}

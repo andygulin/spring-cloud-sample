@@ -5,11 +5,16 @@ service:
         peer1
       port1:
         1111
-      active1:
-        peer1
       hostname2:
         peer2
       port2:
         1112
-      active2:
-        peer2
+  security:
+    user:
+      name: admin
+      password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: org.gjt.mm.mysql.Driver

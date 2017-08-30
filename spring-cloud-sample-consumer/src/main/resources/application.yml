@@ -1,13 +1,19 @@
 spring:
   application:
     name: service-consumer
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://localhost:8888/
+      label: master
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${security.user.name}:${security.user.password}@localhost:1111/eureka/
+      defaultZone: http://${security.user.name}:${security.user.password}@${service.eureka.instance.hostname1}:${service.eureka.instance.port1}/eureka/,http://${security.user.name}:${security.user.password}@${service.eureka.instance.hostname2}:${service.eureka.instance.port2}/eureka/
 server:
   port: 8080
 security:
   user:
-    name: admin
-    password: admin
+    name: ${service.security.user.name}
+    password: ${service.security.user.password}

@@ -2,17 +2,23 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
-    username: root
-    password: root
-    driver-class-name: org.gjt.mm.mysql.Driver
+    url: ${service.datasource.url}
+    username: ${service.datasource.username}
+    password: ${service.datasource.password}
+    driver-class-name: ${service.datasource.driver-class-name}
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://localhost:8888/
+      label: master
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${security.user.name}:${security.user.password}@localhost:1111/eureka/
+      defaultZone: http://${security.user.name}:${security.user.password}@${service.eureka.instance.hostname1}:${service.eureka.instance.port1}/eureka/,http://${security.user.name}:${security.user.password}@${service.eureka.instance.hostname2}:${service.eureka.instance.port2}/eureka/
   instance:
     preferIpAddress: true
 security:
   user:
-    name: admin
-    password: admin
+    name: ${service.security.user.name}
+    password: ${service.security.user.password}

@@ -2,6 +2,7 @@
 
 ##### 模块
     spring-cloud-sample-common          公共模块
+    spring-cloud-config-server          配置中心
     spring-cloud-sample-eureka-server   服务中心
     spring-cloud-sample-userservice     服务提供者
     spring-cloud-sample-consumer        服务消费者
@@ -9,11 +10,18 @@
 ##### 运行
     mvn clean package
 
+###### 启动配置中心
+    java -jar spring-cloud-sample-config-server/target/spring-cloud-sample-config-server-1.0.jar
+
 ###### 启动服务中心
-    java -jar spring-cloud-sample-eureka-server/target/spring-cloud-sample-eureka-server-1.0.jar
+    修改hosts文件
+    127.0.0.1 peer1 peer2
+    java -jar spring-cloud-sample-eureka-server/target/spring-cloud-sample-eureka-server-1.0.jar --spring.profiles.active=peer1
+    java -jar spring-cloud-sample-eureka-server/target/spring-cloud-sample-eureka-server-1.0.jar --spring.profiles.active=peer2
     
 ###### 查看服务中心状态
-    http://localhost:1111
+    http://peer1:1111
+    http://peer2:1112
     用户名：admin
     密码：admin
     

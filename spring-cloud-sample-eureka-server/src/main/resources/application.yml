@@ -1,16 +1,15 @@
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://localhost:${server.port}/eureka/
-server:
-  port: 1111
 security:
   basic:
     enabled: true
   user:
-    name: admin
-    password: admin
+    name: ${service.security.user.name}
+    password: ${service.security.user.password}
+spring:
+  application:
+    name: enreka-ha
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://localhost:8888/
+      label: master
